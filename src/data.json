@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "avatar": "https://klike.net/uploads/posts/2019-03/1551511784_4.jpg",
+      "name": "Kierra Press",
+      "status": "online",
+      "lastMessage":  {
+        "text": "OMW bro...",
+        "read": true,
+        "isMe": false,
+        "createdAt": 1654626713391
+      }
+    },
+    {
+      "id": 2,
+      "avatar": "https://vsekidki.ru/uploads/posts/2016-08/1470735121_lecdaa3axdc.jpg",
+      "name": "Davis Dorwart",
+      "status": "working",
+      "lastMessage":  {
+        "text": "Thank you Davis!",
+        "read": true,
+        "isMe": true,
+        "createdAt": 1654626713391
+      }
+    },
+    {
+      "id": 3,
+      "avatar": "https://i.pinimg.com/originals/2e/2e/21/2e2e2125ee53807c2d77b34773f84b5c.jpg",
+      "name": "Rayna Bator",
+      "status": "offline",
+      "lastMessage":  {
+        "text": "I have send the files back to ya it only took me about 60 mins this time was with testing too.",
+        "read": false,
+        "isMe": false,
+        "createdAt": 1654626713391
+      }
+    }
+  ]
+}
