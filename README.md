@@ -1,5 +1,12 @@
 # desktop-chat
 
+Stack:
+* Vue.js 3
+* TypeScript
+* Vuex
+* Vue Router
+* Axios
+
 ## Project setup
 ```
 npm install
