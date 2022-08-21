@@ -3,7 +3,7 @@
 Stack:
 * Vue.js 3
 * TypeScript
-* Vuex
+* Pinia (state manager)
 * Vue Router
 * Axios
 

@@ -28,10 +28,10 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
-import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 import TextField from '@/components/TextField.vue';
 import MainButton from '@/components/MainButton.vue';
-import { login } from '@/api/auth';
+import useAuthStore from '@/store';
 
 const authData = reactive<{ email: string; password: string; }>({ email: '', password: '' });
 const authDataErrors = reactive<{ email: string; password: string; }>({ email: '', password: '' });
@@ -49,10 +49,18 @@ const emailError = computed(() => {
   return '';
 });
 
-const store = useStore();
+const router = useRouter();
 
-const loginUser = () => {
-  store.dispatch('login', authData);
+const store = useAuthStore();
+const { login } = store;
+
+const loginUser = async () => {
+  try {
+    await login(authData);
+    router.push({ name: 'home' });
+  } catch (err) {
+    console.log('component', err);
+  }
 };
 </script>
 <style lang="scss">
