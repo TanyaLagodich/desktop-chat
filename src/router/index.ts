@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import ChatView from '@/views/ChatView.vue';
+import AuthView from '@/views/AuthView.vue';
+import LoginView from '@/views/LoginView.vue';
+import SignUpView from '@/views/SignUpView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -7,6 +10,23 @@ const routes: Array<RouteRecordRaw> = [
     name: 'home',
     component: ChatView,
   },
+  {
+    path: '/auth',
+    component: AuthView,
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: LoginView,
+      },
+      {
+        path: 'sign-up',
+        name: 'sign-up',
+        component: SignUpView,
+      },
+    ],
+  },
+
   // {
   //   path: '/about',
   //   name: 'about',
