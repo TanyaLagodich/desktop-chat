@@ -1,12 +1,12 @@
-export interface IUser {
-  id: number;
-  avatar: string;
-  name: string
-  status: string,
-  lastMessage: {
-    text: string;
-    read: boolean;
-    isMe: boolean;
-    createdAt: number;
-  }
+export interface User {
+  confirmed: boolean;
+  createdAt: string;
+  email: string;
+  name: string;
+  updatedAt: string;
+}
+
+export interface Chat {
+  _id: string;
+  members: User[];
 }

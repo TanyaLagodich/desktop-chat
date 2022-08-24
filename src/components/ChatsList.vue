@@ -1,44 +1,27 @@
 <template>
   <ul class="users-list">
+    <!-- TODO user active class -->
     <li
-      v-for="user in users"
-      :key="user.id"
+      v-for="chat in chats"
+      :key="chat._id"
       class="user"
-      :class="{ 'user__active': user.id === 1 }"
+      :class="{ 'user__active': true }"
     >
-      <div class="user__avatar">
-        <img
-          :src="user.avatar"
-          :alt="`${user.name} profile picture`">
-          <span
-            :class="`user__status ${user.status}`"
-          >
-          </span>
-      </div>
-
-      <div>
-        <p class="user__name">
-          {{ user.name }}
-        </p>
-        <p class="user__message">
-          {{ user.lastMessage.text }}
-        </p>
-      </div>
+      <chat-item
+        :chat="chat"
+      />
     </li>
   </ul>
 </template>
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { IUser } from '@/types';
+<script setup lang="ts">
+import { defineProps, toRefs } from 'vue';
+import { Chat } from '@/types';
+import ChatItem from './ChatItem.vue';
 
-export default defineComponent({
-  props: {
-    users: {
-      type: Array as PropType<Array<IUser>>,
-      default: () => [],
-    },
-  },
-});
+defineProps<{
+  chats: Chat[];
+}>();
+
 </script>
 <style scoped lang="scss">
   .users-list {

@@ -7,6 +7,10 @@ Stack:
 * Vue Router
 * Axios
 
+TODO:
+* fix types (any)
+
+
 ## Project setup
 ```
 npm install

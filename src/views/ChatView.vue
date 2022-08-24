@@ -1,26 +1,22 @@
 <template>
   <div class="chat-view">
-    <users-list
-      :users="users"
+    <chats-list
+      :chats="chats"
     />
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
-import UsersList from '@/components/UsersList.vue';
-import * as sourceData from '@/data.json';
-import { IUser } from '@/types';
+<script setup lang="ts">
+import ChatsList from '@/components/ChatsList.vue';
+import useFetch from '@/composables/useFetch';
+import getChatsList from '@/api/chats';
+import useStore from '@/store';
 
-export default defineComponent({
-  components: {
-    UsersList,
-  },
-  data() {
-    return {
-      users: sourceData.users as Array<IUser>,
-    };
-  },
-});
+const { response: chats } = useFetch(getChatsList);
+// const store = useStore();
+
+// console.log(chats, response);
+
+// await store.getProfile();
 </script>
 <style scoped lang="scss">
   .chat-view {

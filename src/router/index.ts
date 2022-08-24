@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import ChatView from '@/views/ChatView.vue';
+import App from '@/App.vue';
 import AuthView from '@/views/AuthView.vue';
 import LoginView from '@/views/LoginView.vue';
 import SignUpView from '@/views/SignUpView.vue';

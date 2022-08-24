@@ -1,30 +1,32 @@
 <template>
-  <h2>Log in to Chat</h2>
-  <text-field
-    v-model="authData.email"
-    label="Email"
-    type="email"
-    placehodler="Type your email"
-    :invalid="!isEmailValid"
-    :error="emailError"
-  />
-  <text-field
-    v-model="authData.password"
-    label="Password"
-    type="password"
-    placeholder="Type your password"
-  />
-  <main-button
-    text="Log in"
-    :disabled="isDisabled"
-    @@click="loginUser"
-  />
-  <p>Not a member yet?</p>
-  <router-link
-    :to="{ name: 'sign-up' }"
-  >
-    Sign up
-  </router-link>
+  <div>
+    <h2>Log in to Chat</h2>
+    <text-field
+      v-model="authData.email"
+      label="Email"
+      type="email"
+      placehodler="Type your email"
+      :invalid="!isEmailValid"
+      :error="emailError"
+    />
+    <text-field
+      v-model="authData.password"
+      label="Password"
+      type="password"
+      placeholder="Type your password"
+    />
+    <main-button
+      text="Log in"
+      :disabled="isDisabled"
+      @@click="loginUser"
+    />
+    <p>Not a member yet?</p>
+    <router-link
+      :to="{ name: 'sign-up' }"
+    >
+      Sign up
+    </router-link>
+  </div>
 </template>
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
