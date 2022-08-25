@@ -4,12 +4,16 @@ import App from '@/App.vue';
 import AuthView from '@/views/AuthView.vue';
 import LoginView from '@/views/LoginView.vue';
 import SignUpView from '@/views/SignUpView.vue';
+import useAuthStore from '@/store';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
+    name: 'chat',
     component: ChatView,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/auth',
@@ -41,6 +45,12 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const { isLoggedIn } = useAuthStore();
+  if (to.meta.requiresAuth && !isLoggedIn) next({ name: 'login' });
+  else next();
 });
 
 export default router;

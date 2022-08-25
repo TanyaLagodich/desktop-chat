@@ -18,7 +18,7 @@
     <main-button
       text="Log in"
       :disabled="isDisabled"
-      @@click="loginUser"
+      @@click="getToken(authData)"
     />
     <p>Not a member yet?</p>
     <router-link
@@ -30,10 +30,9 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
-import { useRouter } from 'vue-router';
+import useAuthStore from '@/store';
 import TextField from '@/components/TextField.vue';
 import MainButton from '@/components/MainButton.vue';
-import useAuthStore from '@/store';
 
 const authData = reactive<{ email: string; password: string; }>({ email: '', password: '' });
 const authDataErrors = reactive<{ email: string; password: string; }>({ email: '', password: '' });
@@ -42,7 +41,6 @@ const emailReg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((
 const isEmailValid = computed(() => !!authData.email && emailReg.test(authData.email));
 const isDisabled = computed(() => !isEmailValid.value || !authData.password);
 const emailError = computed(() => {
-  console.log('is it working');
   if (!authData.email) {
     return 'Email should be not blank';
   } if (!emailReg.test(authData.email)) {
@@ -51,19 +49,8 @@ const emailError = computed(() => {
   return '';
 });
 
-const router = useRouter();
-
 const store = useAuthStore();
-const { login } = store;
-
-const loginUser = async () => {
-  try {
-    await login(authData);
-    router.push({ name: 'home' });
-  } catch (err) {
-    console.log('component', err);
-  }
-};
+const { getToken } = store;
 </script>
 <style lang="scss">
   .login-form {

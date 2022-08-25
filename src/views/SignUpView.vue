@@ -20,7 +20,7 @@
   />
   <main-button
     text="Sign up"
-    @@click="signUpUser"
+    @@click="createNewUser(authData)"
   />
   <p>Already have an account?</p>
   <router-link
@@ -31,15 +31,14 @@
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue';
+import useAuthStore from '@/store';
 import TextField from '@/components/TextField.vue';
 import MainButton from '@/components/MainButton.vue';
-import { signUp } from '@/api/auth';
 
 const authData = reactive<
                     { name: string; email: string; password: string; }
                   >({ name: '', email: '', password: '' });
 
-const signUpUser = async () => {
-  await signUp(authData);
-};
+const store = useAuthStore();
+const { createNewUser } = store;
 </script>

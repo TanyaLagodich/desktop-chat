@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-const useFetch = (apiMethod: any) => {
+const useFetch = (apiMethod: any, config: { skip?: boolean; body?: any} = {}) => {
   const data: any = ref(null);
   const response = ref<any>(null);
   const error: any = ref(null);
@@ -9,7 +9,7 @@ const useFetch = (apiMethod: any) => {
   const fetch = async () => {
     loading.value = true;
     try {
-      const result = await apiMethod();
+      const result = await apiMethod(config.body);
       response.value = result;
       data.value = result.data;
     } catch (err) {
@@ -19,10 +19,12 @@ const useFetch = (apiMethod: any) => {
     }
   };
 
-  fetch();
+  if (!config.skip) {
+    fetch();
+  }
 
   return {
-    response, error, data, loading, fetch,
+    data, response, error, loading, fetch,
   };
 };
 

@@ -9,14 +9,11 @@
 import ChatsList from '@/components/ChatsList.vue';
 import useFetch from '@/composables/useFetch';
 import getChatsList from '@/api/chats';
-import useStore from '@/store';
+import useAuthStore from '@/store';
 
 const { response: chats } = useFetch(getChatsList);
-// const store = useStore();
-
-// console.log(chats, response);
-
-// await store.getProfile();
+const { profile } = useAuthStore();
+profile();
 </script>
 <style scoped lang="scss">
   .chat-view {

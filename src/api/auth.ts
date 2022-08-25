@@ -10,25 +10,12 @@ export const login = async (data: any): Promise<any> => instance.request({
 })
   .then((response) => response.data);
 
-//   fetch(`${API_REQUEST_URL}/users/login`, {
-//   method: 'POST',
-//   body: JSON.stringify(data),
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-// })
-//   .then((response) => response.json());
-
-export const signUp = async (data: any): Promise<void> => {
-  fetch(`${API_REQUEST_URL}/users/sign-up`, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json());
-};
+export const signUp = async (data: any): Promise<void> => instance.request({
+  method: 'POST',
+  url: '/users/sign-up',
+  data,
+})
+  .then((response) => response.data);
 
 export const getProfile = async (): Promise<User> => instance.request<User>({
   method: 'GET',
